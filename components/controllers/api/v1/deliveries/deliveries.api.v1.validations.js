@@ -6,6 +6,9 @@ import Joi from '@hapi/joi'
 export default {
   'mainGet': Joi.object({
     "when": Joi.string().isoDate().optional(),
+    "dateFrom": Joi.string().isoDate().optional(),
+    "dateTo": Joi.string().isoDate().optional(),
+    "weight": Joi.string().optional(),
     "page": Joi.number().optional(),
     "limit": Joi.number().optional(),
   }),
@@ -28,6 +31,9 @@ export default {
       .min(1).required(),
   }),
   'getOne': Joi.object({
+    "id": Joi.string().alphanum().min(24).max(24),
+  }),
+  'find': Joi.object({
     "id": Joi.string().alphanum().min(24).max(24),
   }),
 }
